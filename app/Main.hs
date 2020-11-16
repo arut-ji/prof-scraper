@@ -4,7 +4,7 @@ import Text.HTML.Scalpel
 import ProfScrapeLib
 
 schools :: [String]
-countries = [
+schools = [
           "chemistry",
           "computing",
           "engineering",
