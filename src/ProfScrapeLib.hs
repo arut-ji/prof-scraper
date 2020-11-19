@@ -11,7 +11,7 @@ import Text.HTML.Scalpel
 
 numProfessors :: String -> IO (Maybe Int)
 numProfessors x = do
-  res <- scrapeURL (constructURL x) nonHonoraryStaffs
+  res <- scrapeURL (constructURL x) scrapeStaffSection
   return $ maybeTransform $ length . filterProfessors . concat <$> res
 
 maybeTransform :: Maybe Int -> Maybe Int
@@ -19,6 +19,9 @@ maybeTransform (Just x) = if x == 0 then Nothing else Just x
 
 constructURL :: String -> String
 constructURL x = "https://www.gla.ac.uk/schools/" ++ x ++ "/staff"
+
+scrapeStaffSection :: Scraper String [[String]]
+scrapeStaffSection = chroot ("div" @: ["id" @= "content_1234567"]) nonHonoraryStaffs
 
 nonHonoraryStaffs :: Scraper String [[String]]
 nonHonoraryStaffs = chroots ("ul" @: [nonHonoraryVisiting]) $ texts "li"
@@ -32,6 +35,3 @@ filterProfessors = filter pred
     isProf = isInfixOf "Professor"
     isNotAssistantProf = not . isInfixOf "Assistant Professor"
     isNotAssociateProf = not . isInfixOf "Associate Professor"
-
-example :: IO (Maybe String)
-example = scrapeStringLike

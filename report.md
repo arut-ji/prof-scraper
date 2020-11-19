@@ -14,7 +14,9 @@ Since Haskell has taken the functional approach, the codes are declarative, whic
 
 By doing this exercise, I am convinced that Haskell codes are far more readable than the TS’s ones. With human-friendly function names in Haskell, the code is easy to understand, and even easier with some syntactic sugars - do block, case expressions, pattern matching, function composition operator and many more. However, I am confused by some of the infix operators, `$`, `<|>`, `<$>`, and sometimes scared by theml; it usually takes me a while in order to understand their usage.
 
-<!-- ## Code Maintainability -->
+## Code Maintainability
+
+Both TS and Haskell are statically typed languages, any type mismatched can be caught at compile time, at this point they are not diverged much from each other. However, TS is a multi-paradigm language, some imperative code fragments can be found in TS codes, which lead to a less maintainability - imperative approach does not care much about side-effects, and makes it harder for testing. On the other hand, a Haskell application consists of smaller bits of functions - in which they are composed to serve different purposes - and side-effects-free. Therefore, it is easier to test, and to maintain Haskell applications.
 
 ## Toolchain Support
 
