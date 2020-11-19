@@ -24,7 +24,6 @@ dependencies:
 - split
 - mtl
 - http-client
-- type-of-html
 - blaze-html
 
 library:
