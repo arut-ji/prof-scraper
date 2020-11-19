@@ -32,3 +32,6 @@ filterProfessors = filter pred
     isProf = isInfixOf "Professor"
     isNotAssistantProf = not . isInfixOf "Assistant Professor"
     isNotAssociateProf = not . isInfixOf "Associate Professor"
+
+example :: IO (Maybe String)
+example = scrapeStringLike
