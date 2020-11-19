@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 4387ba5232865e68803fab905d31efabd21a2cabf51a58cf238197df6e04f6f4
+-- hash: e18536f6499a24c9111a3d453e5eb973b8a44dee1883ebb00a46fd5f12607765
 
 name:           prof-scraper
 version:        0.1.0.0
@@ -25,7 +25,6 @@ source-repository head
 
 library
   exposed-modules:
-      Component
       ProfScrapeLib
       Report
   other-modules:

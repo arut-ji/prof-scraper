@@ -12,8 +12,7 @@ schools =
     "ges",
     "mathematicsstatistics",
     "physics",
-    "psychology",
-    "Yeet"
+    "psychology"
   ]
 
 schoolNames :: [String]
@@ -31,4 +30,4 @@ main :: IO ()
 main = do
   counts <- mapM numProfessors schools
   let results = zip3 schools schoolNames counts
-  writeFile "index.html" (report results)
+  generateReport results
