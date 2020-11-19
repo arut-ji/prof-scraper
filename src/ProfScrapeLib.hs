@@ -2,6 +2,7 @@
 
 module ProfScrapeLib
   ( numProfessors,
+    constructURL,
   )
 where
 
@@ -10,14 +11,17 @@ import Text.HTML.Scalpel
 
 numProfessors :: String -> IO (Maybe Int)
 numProfessors x = do
-  res <- scrapeURL (constructURL x) staffs
-  return $ length . filterProfessors . concat <$> res
+  res <- scrapeURL (constructURL x) nonHonoraryStaffs
+  return $ maybeTransform $ length . filterProfessors . concat <$> res
+
+maybeTransform :: Maybe Int -> Maybe Int
+maybeTransform (Just x) = if x == 0 then Nothing else Just x
 
 constructURL :: String -> String
 constructURL x = "https://www.gla.ac.uk/schools/" ++ x ++ "/staff"
 
-staffs :: Scraper String [[String]]
-staffs = chroots ("ul" @: [nonHonoraryVisiting]) $ texts "li"
+nonHonoraryStaffs :: Scraper String [[String]]
+nonHonoraryStaffs = chroots ("ul" @: [nonHonoraryVisiting]) $ texts "li"
   where
     nonHonoraryVisiting = notP ("id" @= "honorary-visitinglist")
 

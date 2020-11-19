@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 1bba313308ea86a910c555b49f1d09c788bfc79fa43f782d841463fcf07f0478
+-- hash: 4387ba5232865e68803fab905d31efabd21a2cabf51a58cf238197df6e04f6f4
 
 name:           prof-scraper
 version:        0.1.0.0
@@ -25,17 +25,21 @@ source-repository head
 
 library
   exposed-modules:
+      Component
       ProfScrapeLib
+      Report
   other-modules:
       Paths_prof_scraper
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+    , blaze-html
     , http-client
     , mtl
     , scalpel
     , split
+    , type-of-html
   default-language: Haskell2010
 
 executable prof-scraper-exe
@@ -47,11 +51,13 @@ executable prof-scraper-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , blaze-html
     , http-client
     , mtl
     , prof-scraper
     , scalpel
     , split
+    , type-of-html
   default-language: Haskell2010
 
 test-suite prof-scraper-test
@@ -64,6 +70,7 @@ test-suite prof-scraper-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , blaze-html
     , http-client
     , mtl
     , prof-scraper
@@ -71,4 +78,5 @@ test-suite prof-scraper-test
     , split
     , tasty
     , tasty-hunit
+    , type-of-html
   default-language: Haskell2010
